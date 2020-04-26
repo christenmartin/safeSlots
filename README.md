@@ -1,9 +1,9 @@
 # safeSlots
 
-We're creating an app for the covid-19 crisis that: 
+Our app aims to solve the problem of covid-19 spread by: 
 
-* Makes for a safer, quicker, and more orderly experience for customers and employees.
+* Making for a safer, quicker, and more orderly experience for customers and employees.
 
-* Reduces vectors for covid-19 by significantly limiting the number of people standing in line or in the store.
+* Reducing vectors for covid-19 by significantly limiting the number of people standing in line or in the store.
 
-* Allows stores to more easily manage how many customers come in per time slot.
+* Allowing stores to more easily manage how many customers come in per time slot.
