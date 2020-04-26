@@ -1,6 +1,6 @@
 # safeSlots
 
-Our app aims to solve the problem of covid-19 spread by: 
+Our app aims to reduce covid-19 spread by: 
 
 * Making for a safer, quicker, and more orderly experience for customers and employees.
 
