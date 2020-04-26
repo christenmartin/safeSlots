@@ -1,0 +1,8 @@
+{
+  "safeSlots": {
+    "url": "mongodb+srv://janedoe:fauxme@cluster0-wofst.mongodb.net/safeSlots?retryWrites=true&w=majority",
+    "name": "safeSlots",
+    "useNewUrlParser": true,
+    "connector": "mongodb"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "store": {
+    "dataSource": "safeSlots",
+    "public": true
+  },
+  "slot": {
+    "dataSource": "safeSlots",
+    "public": true
+  },
+  "booking": {
+    "dataSource": "safeSlots",
+    "public": true
+  },
+  "user": {
+    "dataSource": "safeSlots",
+    "public": true
+  }
+}
