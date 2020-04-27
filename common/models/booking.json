@@ -32,6 +32,14 @@
       "options": {
         "nestRemoting": true
       }
+    }, 
+    "store": {
+      "type": "belongsTo", 
+      "model": "store", 
+      "foreignKey": "", 
+      "options": {
+        "nestRemoting": true 
+      }
     }
   },
   "acls": [],
