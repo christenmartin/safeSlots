@@ -19,10 +19,12 @@
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.2.0",
     "loopback-connector-mongodb": "^4.2.0",
+    "moment": "^2.24.0",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^3.0.0"
   },
   "devDependencies": {
+    "body-parser": "^1.19.0",
     "eslint": "^4.18.2",
     "eslint-config-loopback": "^8.0.0",
     "nodemon": "^2.0.3"

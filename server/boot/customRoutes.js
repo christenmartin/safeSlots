@@ -3,6 +3,7 @@ module.exports = function (app) {
   const router = app.loopback.Router();
   const Bookings = app.models.Booking;
   const Slots = app.models.Slot;
+  const moment = require("moment");
   const bodyParser = require("body-parser");
   router.use(bodyParser.json({ extended: true }));
 
@@ -30,17 +31,35 @@ module.exports = function (app) {
         .catch(err => console.log(err))
   })
 
-//   For GET api/availableBookings 
-//   -current date comes in 
-//   -query db to see if slots for that date already exist in db. if yes, query bookings to check how many slots are still 
-//   available for each slot that day, i.e. where bookings.length < maxPeoplePerSlot. Return 3-5 options to user. May be ways to optimize this so it is less costly. 
+  router.get("/api/availableSlots", (req, res) => {
+    //for now only query avail slots for today; can change it to 3-7 day increments if store commits to regular duration/maxPeople 
+    const { storeId } = req.body; 
+    // const tomorrow = moment().utc().add(1, 'days').startOf('day').toISOString(); 
+    // const yesterday = moment().utc().subtract(1, 'days').endOf('day').toISOString();
+    const dayStart = moment().utc().startOf('day').toISOString();
+    const dayEnd = moment().utc().endOf('day').toISOString();
 
-//   -if date does not exist in db, generate new slots for that date. return 3-5 options to user. 
-
-//   -alternatively could possibly integrate cron jobs, which trigger at programmed intervals like per day or per week. 
-//   but if we used this, we would need to know what duration the store wanted for slots the next day. cannot change 
-//   slot time dynamically, or booked users will have to re-book their slots, which is a bad UX. 
-
+    Slots.find({
+      "where": { 
+        date: 
+          { between: [dayStart, dayEnd] }, 
+          storeId: storeId
+      }, include: 'bookings'})
+      .then(slots => {
+        if (!slots) {
+          //generate new timeslots in db based on maxPeoplePerSlot and duration 
+          //return new slot results of db query 
+          res.json({ "error": "No bookings found for this date and storeId."})
+        } else { 
+        const avail = slots.filter((booking) => {
+            let numBookings = booking.bookings().length; 
+            let maxPeoplePerSlot = booking.maxPeoplePerSlot;
+            return numBookings < maxPeoplePerSlot;
+        });
+        res.json(avail)
+      }})
+      .catch(err => console.log(err));
+  })
   
   app.use(router);
 };
